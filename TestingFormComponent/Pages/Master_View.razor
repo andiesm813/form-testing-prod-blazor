@@ -1,0 +1,72 @@
+@page "/"
+@page "/master_view"
+@using NorthwindSwagger
+@using Models.NorthwindSwagger
+@inject INorthwindSwaggerService NorthwindSwaggerService
+
+<div class="row-layout master-view-container">
+    <EditForm OnValidSubmit="onValidSubmitForm" EditContext="customerDtoEditContext" FormName="customerDto" class="column-layout form">
+        <h6>
+            Add Customers
+        </h6>
+        <div class="column-layout form_fields">
+            <IgbInput @bind-Value="@CustomerDtoModel.CustomerId" Label="customerId" Outlined="true"></IgbInput>
+            <IgbInput @bind-Value="@CustomerDtoModel.CompanyName" Label="companyName" Required Outlined="true"></IgbInput>
+            <IgbInput @bind-Value="@CustomerDtoModel.ContactName" Label="contactName" Outlined="true"></IgbInput>
+            <IgbInput @bind-Value="@CustomerDtoModel.ContactTitle" Label="contactTitle" Outlined="true"></IgbInput>
+            <IgbInput @bind-Value="@CustomerDtoModel.Address.Street" Label="address.street" Outlined="true"></IgbInput>
+            <IgbInput @bind-Value="@CustomerDtoModel.Address.City" Label="address.city" Outlined="true"></IgbInput>
+            <IgbInput @bind-Value="@CustomerDtoModel.Address.Region" Label="address.region" Outlined="true"></IgbInput>
+            <IgbInput @bind-Value="@CustomerDtoModel.Address.PostalCode" Label="address.postalCode" Outlined="true"></IgbInput>
+            <IgbInput @bind-Value="@CustomerDtoModel.Address.Country" Label="address.country" Required Outlined="true"></IgbInput>
+            <IgbInput @bind-Value="@CustomerDtoModel.Address.Phone" Label="address.phone" Outlined="true"></IgbInput>
+        </div>
+        <div class="row-layout actions">
+            <IgbButton Variant="ButtonVariant.Outlined" DisplayType="ButtonBaseType.Reset" @onclick="@(_ => { CustomerDtoModel = new(); })" class="button" master_view-scope>
+                Reset
+                <IgbRipple></IgbRipple>
+            </IgbButton>
+            <IgbButton DisplayType="ButtonBaseType.Submit" class="button" master_view-scope>
+                Add
+                <IgbRipple></IgbRipple>
+            </IgbButton>
+        </div>
+        <IgbSnackbar ActionText="OK" Action="@(e => _snackbarsuccess!.ToggleAsync())" @ref="_snackbarsuccess">
+            Your new submission was saved successfully!
+        </IgbSnackbar>
+        <IgbSnackbar ActionText="OK" Action="@(e => _snackbarerror!.ToggleAsync())" @ref="_snackbarerror">
+            Uh-oh! Something went wrong.
+        </IgbSnackbar>
+    </EditForm>
+</div>
+
+@code {
+    private CustomerDto _customerDtoModel = new();
+    private CustomerDto CustomerDtoModel
+    {
+        get => _customerDtoModel;
+        set
+        {
+            _customerDtoModel = value;
+            customerDtoEditContext = new(CustomerDtoModel);
+        }
+    }
+
+    private IgbSnackbar _snackbarsuccess;
+    private IgbSnackbar _snackbarerror;
+    private EditContext customerDtoEditContext = new(new CustomerDto());
+
+    public Master_View()
+    {
+        CustomerDtoModel = new();
+    }
+
+    private async void onValidSubmitForm(EditContext args)
+    {
+        var customerDto = (CustomerDto)args.Model;
+        if (customerDto != null)
+        {
+            await NorthwindSwaggerService.PostCustomerDto(customerDto);
+        }
+    }
+}
