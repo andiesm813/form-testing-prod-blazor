@@ -1,9 +1,14 @@
 :root {
-	--ig-font-family: "Nunito Sans";
-	--ig-surface-500: #f8f8fa;
-	--ig-warn-500: #f56b1d;
-	--ig-info-500: #9c27b0;
-	--ig-warn-800-contrast: white;
+	--ig-font-family: "Roboto";
+	--ig-primary-500: #007bff;
+	--ig-success-500: #28a745;
+	--ig-info-500: #17a2b8;
+	--ig-success-600-contrast: black;
+	--ig-success-700-contrast: black;
+	--ig-success-800-contrast: black;
+	--ig-success-A400-contrast: black;
+	--ig-info-900-contrast: white;
+	--ig-info-A700-contrast: white;
 }
 
 /* Charts */
