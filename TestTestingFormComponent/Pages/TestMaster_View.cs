@@ -17,7 +17,11 @@ namespace TestTestingFormComponent
         typeof(IgbInputModule),
         typeof(IgbButtonModule),
         typeof(IgbRippleModule),
-        typeof(IgbSnackbarModule));
+        typeof(IgbSnackbarModule),
+        typeof(IgbListModule),
+        typeof(IgbAvatarModule),
+        typeof(IgbRadioGroupModule),
+        typeof(IgbRadioModule));
       ctx.Services.AddScoped<INorthwindSwaggerService>(sp => new MockNorthwindSwaggerService());
       var componentUnderTest = ctx.RenderComponent<Master_View>();
       Assert.NotNull(componentUnderTest);

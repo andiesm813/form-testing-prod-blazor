@@ -5,6 +5,7 @@
     justify-content: center;
     align-items: center;
     align-content: flex-start;
+    gap: 24px;
     height: 100%;
 }
 .column-layout {
@@ -28,6 +29,13 @@
     overflow: hidden;
     flex-shrink: 0;
 }
+.group {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 24px;
+    position: relative;
+}
 .form {
     justify-content: flex-start;
     align-items: stretch;
@@ -44,4 +52,24 @@
 .button {
     --ig-size: var(--ig-size-medium);
     flex-shrink: 0;
+}
+.button_1 {
+    --ig-size: var(--ig-size-medium);
+    height: max-content;
+}
+.radio-group {
+    width: max-content;
+    height: max-content;
+}
+.avatar {
+    --ig-size: var(--ig-size-small);
+}
+.icon {
+    --size: 24px;
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+}
+.list {
+    height: max-content;
 }
