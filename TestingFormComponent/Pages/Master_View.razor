@@ -38,6 +38,61 @@
             Uh-oh! Something went wrong.
         </IgbSnackbar>
     </EditForm>
+    <div class="column-layout group">
+        <IgbButton DisplayType="ButtonBaseType.Button" class="button_1" master_view-scope>
+            Button
+            <IgbRipple></IgbRipple>
+        </IgbButton>
+        <IgbList class="list" master_view-scope>
+            <IgbListItem>
+                <IgbAvatar slot="start" Shape="AvatarShape.Circle" class="avatar" master_view-scope>
+                    <span class="material-icons">
+                        person
+                    </span>
+                </IgbAvatar>
+                <div slot="title">Title goes here</div>
+                <div slot="subtitle">Subtitle...</div>
+                <span slot="end" class="material-icons icon">
+                    star
+                </span>
+            </IgbListItem>
+            <IgbListItem>
+                <IgbAvatar slot="start" Shape="AvatarShape.Circle" class="avatar" master_view-scope>
+                    <span class="material-icons">
+                        person
+                    </span>
+                </IgbAvatar>
+                <div slot="title">Title goes here</div>
+                <div slot="subtitle">Subtitle...</div>
+                <span slot="end" class="material-icons icon">
+                    star
+                </span>
+            </IgbListItem>
+            <IgbListItem>
+                <IgbAvatar slot="start" Shape="AvatarShape.Circle" class="avatar" master_view-scope>
+                    <span class="material-icons">
+                        person
+                    </span>
+                </IgbAvatar>
+                <div slot="title">Title goes here</div>
+                <div slot="subtitle">Subtitle...</div>
+                <span slot="end" class="material-icons icon">
+                    star
+                </span>
+            </IgbListItem>
+        </IgbList>
+        <IgbRadioGroup Value="@_value" Change="@(e => _value = e.Detail.Value)" class="radio-group" master_view-scope>
+            <IgbRadio Value="1">
+                Label
+            </IgbRadio>
+            <IgbRadio Value="2">
+                Label
+            </IgbRadio>
+            <IgbRadio Value="3">
+                Label
+            </IgbRadio>
+        </IgbRadioGroup>
+    </div>
 </div>
 
 @code {
@@ -55,6 +110,7 @@
     private IgbSnackbar _snackbarsuccess;
     private IgbSnackbar _snackbarerror;
     private EditContext customerDtoEditContext = new(new CustomerDto());
+    private string _value = "1";
 
     public Master_View()
     {
