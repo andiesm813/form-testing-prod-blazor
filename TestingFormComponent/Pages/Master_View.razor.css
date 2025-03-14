@@ -35,8 +35,10 @@
     gap: 16px;
     position: relative;
     padding: 24px;
+    height: 480px;
     min-width: 50px;
     min-height: min-content;
+    max-height: 480px;
     flex-shrink: 0;
 }
 .button {
